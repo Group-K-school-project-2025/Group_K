@@ -1,0 +1,61 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center/cover;
+    padding-top: 30px; /* برای هماهنگ شدن با نوبار */
+}
+
+/* افکت شیشه‌ای برای فرم */
+.glass-card {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0); /* پس‌زمینه ترنسپرنت */
+    backdrop-filter: blur(10px); /* افکت شیشه‌ای */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* دور سفید */
+    border-radius: 10px;
+}
+
+/* استایل ورودی‌ها */
+.input-custom {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+}
+
+.input-custom::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-custom:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+/* دکمه‌ها */
+.btn-light {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn-light:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+.navbar {
+    background-color: #353434 !important;
+    padding-top: 0.2rem; 
+        padding-bottom: 0.2rem;
+}
+
+.navbar-toggler img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-toggler:hover img {
+    transform: scale(1.1);
+}
+
+

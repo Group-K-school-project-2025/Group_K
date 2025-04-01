@@ -1,0 +1,207 @@
+.clickable-slide {
+    cursor: pointer; /* mouse showes as a hand */
+    transition: transform 0.2s ease-in-out;
+}
+
+.clickable-slide:hover {
+    transform: scale(1.05); 
+}
+
+.hero {
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out; /* slow animation */
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.hero-title {
+    font-size: 12px; 
+    font-weight: bold;
+    color: white; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    background:transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: -200px; 
+    text-align: center;
+}
+
+.btn-outline-dark {
+    border-radius: 50px;
+    padding: 10px 25px;
+}
+.navbar {
+    background-color: #636262 !important;
+    padding-top: 0.2rem; 
+        padding-bottom: 0.2rem;
+}
+
+
+.offcanvas-custom {
+    width: 50%;
+}
+
+.background-section {
+    background-image: url('pictures/background\ picture.png');
+    background-size: cover; 
+    background-position: center center; 
+    min-height: 400px; 
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    
+}
+
+.image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.image-button img {
+    width: 20px; 
+    height: auto;
+    margin-top: -740px; 
+    
+}
+
+
+
+
+/* background settings  */
+.background-section {
+    background-image: url('pictures/background\ picture.png');
+    background-size: cover;
+    background-position: center center;
+    min-height: 400px;
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* for adding photo and gallery*/
+}
+
+/*  gallery box settings*/
+.gallery-container {
+    display: none; /* مخفی بودن گالری به طور پیش‌فرض */
+    position: absolute; /* قرار دادن گالری در موقعیت مطلق */
+    top: 100px; /* فاصله از بالای صفحه */
+    margin-top: 30px; /* فاصله از بالای صفحه */
+    left: 50%;
+    transform: translateX(-50%); /* برای وسط‌چین کردن گالری */
+    width: 80%; /* عرض گالری */
+    max-width: 800px; /* حداکثر عرض گالری */
+    height: 350px;; /* ارتفاع گالری */
+    background-color: transparent; /* پس‌زمینه نیمه شفاف */
+    border-radius: 10px;
+    overflow-x: auto; /* اجازه دادن به اسکرول افقی */
+    white-space: nowrap;
+    padding: 10px;
+}
+
+/* تصاویر داخل گالری */
+.gallery-images img {
+    width: 100%; /* تصاویری که در گالری نمایش داده می‌شوند */
+    max-width: 500px; /* حداکثر عرض تصویر */
+    height: auto; /* ارتفاع تصویر */
+    object-fit: contain; /* نمایش تصویر به گونه‌ای که تناسب تصویر حفظ شود */
+    min-width: 100%; /* هر تصویر باید اندازه گالری را پر کند */
+    margin-right: 10px;
+    scroll-snap-align: center;
+}
+
+.image-button img {
+    width: 20px;
+    height: auto;
+}
+
+
+.gallery-container.show {
+    display: block;    
+}
+
+
+
+/* Custom styles for gallery indicators */
+.gallery-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.gallery-indicators .indicator {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.gallery-indicators .indicator.active {
+    background-color: #000; /* Active indicator color */
+}
+
+/* Ensure the images fit correctly inside the container */
+.gallery-images {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+
+/* footer */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+}
+
+
+#galleryBox {
+    display: none; /* در ابتدا گالری مخفی است */
+}
+
+#galleryBox.show {
+    display: block; /* وقتی کلاس "show" اضافه شود، نمایش داده می‌شود */
+}

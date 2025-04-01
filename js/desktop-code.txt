@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAMK - Design Your Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bg-light py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo fw-bold">OAMK</div>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button class="btn btn-outline-primary me-2">Login</button>
+            <button class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero text-center bg-secondary text-white py-5">
+    <div class="container">
+        <h1 class="mb-4">Start designing your own website with a professional website builder!</h1>
+        <button class="btn btn-light btn-lg mb-4">GET STARTED</button>
+        <div>
+            <img src="https://via.placeholder.com/600x300" alt="Website preview image" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark text-white py-5">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <p class="col-md-5">Design a high-quality website for your business. No matter your need: showcasing, introducing your business, presenting your portfolio, or selling your products online. With us, you can create a great website for anything.</p>
+        <div class="col-md-6 text-md-end mt-4 mt-md-0">
+            <h2>Create your own website online in less than ten minutes.</h2>
+            <button class="btn btn-outline-light mt-3">Start free</button>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-success bg-opacity-25 text-center">
+    <div class="container">
+        <h2 class="text-success mb-3">Building a professional website starts here.</h2>
+        <p>Just fill the form then our designers contact you. We will design your professional website with professional designers.</p>
+        <button class="btn btn-success mt-3">Start from here</button>
+        <div class="mt-4">
+            <img src="https://via.placeholder.com/500x250" alt="Professional design preview" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h3>You can build your site exactly the way you want, whether you're a first-time website builder or a professional designer.</h3>
+        <p class="mt-3">Click here to see our portfolio and customer reviews!</p>
+        <button class="btn btn-dark mt-2">Click here</button>
+        <div class="mt-4">
+            <img src="https://via.placeholder.com/600x300" alt="Portfolio example" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <h4 class="text-center mb-4">Why you should choose us?</h4>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">1. High-Quality Design – We create modern, user-friendly, and visually appealing websites.</li>
+            <li class="list-group-item">2. Affordable Prices – Our professional website design is budget-friendly.</li>
+            <li class="list-group-item">3. Fast Delivery – We complete your website quickly without compromising quality.</li>
+            <li class="list-group-item">4. SEO Optimization – Your website will rank on search engines.</li>
+            <li class="list-group-item">5. Custom Solutions – We tailor each website to your specific needs.</li>
+            <li class="list-group-item">6. Ongoing Maintenance – We offer ongoing help and support.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="py-5 bg-light text-center">
+    <div class="container">
+        <h5>Contact us</h5>
+        <div class="mt-3">
+            <a href="#" class="me-3"><img src="https://via.placeholder.com/32" alt="email"></a>
+            <a href="#" class="me-3"><img src="https://via.placeholder.com/32" alt="phone"></a>
+            <a href="#" class="me-3"><img src="https://via.placeholder.com/32" alt="chat"></a>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark py-3 text-center text-white">
+    <p>&copy; 2025 OAMK - All Rights Reserved</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
