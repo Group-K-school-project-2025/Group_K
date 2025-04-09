@@ -1,0 +1,9 @@
+"C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -h localhost -d AMI
+
+
+for connecting cmd with pgAdmin
+------------------------------
+\q
+
+exit of postgres
+-----------------

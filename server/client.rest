@@ -1,0 +1,16 @@
+### get users
+GET http://localhost:3001/users
+
+
+### add new user
+POST http://localhost:3001/new
+Content-Type: application/json
+
+{
+  "first_name": "Minou",
+  "last_name": "Vahedi",
+  "email": "minoovahedinezhad@gmail.com",
+  "mobile": "+453229161",
+  "username": "minoovn",
+  "password": "minoovn"
+}
