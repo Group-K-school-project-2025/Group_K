@@ -7,3 +7,25 @@ for connecting cmd with pgAdmin
 
 exit of postgres
 -----------------
+
+git status
+
+Check github changes 
+----------------------
+git add .
+
+adding changes to github
+-------------
+git add <file-path>
+
+
+adding spechial part 
+---------------------------
+git commit -m "Your commit message"
+
+commit 
+------------------------------
+git push origin main
+
+sending files
+------------------------------
