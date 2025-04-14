@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About AMI</title>
+    <title>AMI WEBSITE DESIGN</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/category.css">
 </head>
 <body>
     
@@ -25,7 +25,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="registerPage.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="Category.html">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="aboutUs.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact us</a></li>
@@ -47,7 +47,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="registerPage.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="Category.html">Templates</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="aboutUs.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact us</a></li>
@@ -56,26 +56,50 @@
             </ul>
         </div>
     </div>
-<!-- About Content -->
-<div class="container about-content text-center">
-    <h2 class="mb-4" style="padding-top: 20px;">About Our Project</h2>
-    <!-- Top Image -->
-<img src="images/AboutUs.png" alt="Header Image" class="img-fluid w-100">
 
-    <p class="lead">
-      This website project was created as part of a course at <span class="highlight">Oulu University of Applied Sciences (OAMK)</span>.
-      The goal of the project was to design and build a modern, responsive web interface using <span class="highlight">HTML, CSS, Bootstrap</span> and other front-end technologies.
-    </p>
-    <p>
-      It showcases various pages including a home page, contact form, login and registration system, all with a consistent theme and design.
-      The project helped us learn how to implement design principles, work with responsive layouts, and deliver a user-friendly experience.
-    </p>
-    <p class="mt-4">
-      <strong>Designed & Developed by:</strong> <br>
-      Minou & Ieva
-    </p>
-  </div>
 
+    <!-- Main Content -->
+     
+    <div class="container mt-5">
+        <h2 class="text-center">Upload Your Template</h2>
+        <form action="/upload-template" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Template Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                    <option value="business">Business</option>
+                    <option value="ecommerce">E-commerce</option>
+                    <option value="portfolio">Portfolio</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="realestate">Real Estate</option>
+                    <option value="event">Event</option>
+                    <option value="nonprofit">Non-profit</option>
+                    <option value="education">Education</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Template Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="uploader" class="form-label">Uploader</label>
+                <input type="text" class="form-control" id="uploader" name="uploader" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Upload Template</button>
+        </form>
+    </div>
 
 
 
@@ -93,7 +117,7 @@
     </div>
 </footer>
 
-    <script src="js/index.js"></script>
+    <script src="js/templateUploadForm.js"></script>
     
 </body>
 </html>

@@ -1,3 +1,6 @@
+/* -------------------------------
+    General Button Styles
+--------------------------------*/
 .clickable-slide {
     cursor: pointer; /* mouse showes as a hand */
     transition: transform 0.2s ease-in-out;
@@ -7,6 +10,46 @@
     transform: scale(1.05); 
 }
 
+/* -------------------------------
+    Button Container Positioning
+--------------------------------*/
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed; /* position fixed to keep button on top */
+    top: 2px; /* position the button at the top */
+    left: 50%; /* center it horizontally */
+    transform: translateX(-50%); /* center it perfectly */
+    z-index: 9999; /* ensure it's above other elements */
+}
+
+/* Image Button Styling */
+.image-button img {
+    width: 30px; /* adjust the width to make it visible */
+    height: auto;
+    margin-top: 0; /* remove the negative margin */
+}
+
+/* -------------------------------
+    Navbar
+--------------------------------*/
+.navbar {
+    background-color: #636262 !important;
+    padding-top: 0.2rem; 
+        padding-bottom: 0.2rem;
+}
+
+
+.offcanvas-custom {
+    width: 50%;
+}
+
+
+/* -------------------------------
+    Hero Section
+--------------------------------*/
 .hero {
     height: 100vh; 
     display: flex;
@@ -43,57 +86,10 @@
     border-radius: 50px;
     padding: 10px 25px;
 }
-.navbar {
-    background-color: #2c2b2e !important;
-    padding-top: 0.2rem; 
-        padding-bottom: 0.2rem;
-}
 
-
-.offcanvas-custom {
-    width: 50%;
-}
-
-.background-section {
-    background-image: url('pictures/background\ picture.png');
-    background-size: cover; 
-    background-position: center center; 
-    min-height: 400px; 
-    padding: 50px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-}
-
-
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    
-}
-
-.image-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.image-button img {
-    width: 20px; 
-    height: auto;
-    margin-top: -740px; 
-    
-}
-
-
-
-
-/* background settings  */
+/* -------------------------------
+    Background Section
+--------------------------------*/
 .background-section {
     background-image: url('pictures/background\ picture.png');
     background-size: cover;
@@ -103,51 +99,80 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* for adding photo and gallery*/
+    position: relative; /* for positioning gallery */
 }
 
-/*  gallery box settings*/
+/* -------------------------------
+    Clickable Slide Hover Effect
+--------------------------------*/
+.clickable-slide {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.clickable-slide:hover {
+    transform: scale(1.05);
+}
+
+/* -------------------------------
+    Gallery Container (Hidden by Default)
+--------------------------------*/
+/* Gallery Container (Hidden by Default) */
+/* Hide the gallery initially */
 .gallery-container {
-    display: none; /* مخفی بودن گالری به طور پیش‌فرض */
-    position: absolute; /* قرار دادن گالری در موقعیت مطلق */
-    top: 100px; /* فاصله از بالای صفحه */
-    margin-top: 30px; /* فاصله از بالای صفحه */
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 130px;
     left: 50%;
-    transform: translateX(-50%); /* برای وسط‌چین کردن گالری */
-    width: 80%; /* عرض گالری */
-    max-width: 800px; /* حداکثر عرض گالری */
-    height: 350px;; /* ارتفاع گالری */
-    background-color: transparent; /* پس‌زمینه نیمه شفاف */
+    transform: translateX(-50%);
+    width: 80%; /* Width of the gallery */
+    max-width: 800px;
+    height: 350px; /* Height of the gallery */
+    background-color: transparent;
     border-radius: 10px;
-    overflow-x: auto; /* اجازه دادن به اسکرول افقی */
+    overflow-x: auto;
     white-space: nowrap;
     padding: 10px;
 }
 
-/* تصاویر داخل گالری */
+/* Show the gallery when class 'show' is added */
+.gallery-container.show {
+    display: block; /* Make it visible */
+}
+
+/* -------------------------------
+    Gallery Images Container
+--------------------------------*/
+.gallery-images {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+/* Each image inside the gallery */
+.gallery-images .gallery-item {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Image styling */
 .gallery-images img {
-    width: 100%; /* تصاویری که در گالری نمایش داده می‌شوند */
-    max-width: 500px; /* حداکثر عرض تصویر */
-    height: auto; /* ارتفاع تصویر */
-    object-fit: contain; /* نمایش تصویر به گونه‌ای که تناسب تصویر حفظ شود */
-    min-width: 100%; /* هر تصویر باید اندازه گالری را پر کند */
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    min-width: 100%;
     margin-right: 10px;
     scroll-snap-align: center;
 }
 
-.image-button img {
-    width: 20px;
-    height: auto;
-}
 
-
-.gallery-container.show {
-    display: block;    
-}
-
-
-
-/* Custom styles for gallery indicators */
+/* -------------------------------
+    Gallery Indicators (Pagination Dots)
+--------------------------------*/
+/* Styling for the gallery control buttons (indicators) */
 .gallery-indicators {
     display: flex;
     justify-content: center;
@@ -166,24 +191,30 @@
 }
 
 .gallery-indicators .indicator.active {
-    background-color: #000; /* Active indicator color */
+    background-color: #000;
 }
-
-/* Ensure the images fit correctly inside the container */
-.gallery-images {
+/* -------------------------------
+    Close Button Style
+--------------------------------*/
+.button-container {
     display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
 }
 
-
-
-#galleryBox {
-    display: none; /* در ابتدا گالری مخفی است */
+.image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
-#galleryBox.show {
-    display: block; /* وقتی کلاس "show" اضافه شود، نمایش داده می‌شود */
+.image-button img {
+    width: 20px;
+    height: auto;
+    margin-top: -740px; /* اگر این مشکل‌ساز بود، بررسیش می‌کنیم */
 }
 
 /* footer */

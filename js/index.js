@@ -1,120 +1,75 @@
-////////// first page /////////////
-// when the page is loaded, the first image is shown and the rest are hidden
-
 document.addEventListener("DOMContentLoaded", function () {
+    // باز و بسته کردن گالری
     const openGalleryBtn = document.getElementById("openGallery");
-    if (openGalleryBtn) {
-        openGalleryBtn.addEventListener("click", function () {
-            let gallery = document.getElementById("galleryBox");
+    const galleryBox = document.getElementById("galleryBox");
 
-            // Check if the gallery is already open or closed
-            if (gallery.classList.contains("show")) {
-                gallery.classList.remove("show"); // if it was open, close it
-            } else {
-                gallery.classList.add("show"); // if it was closed, open it
-            }
+    if (openGalleryBtn && galleryBox) {
+        // نمایش گالری به‌صورت پیش‌فرض هنگام بارگذاری صفحه
+        galleryBox.classList.add("show");
+
+        // باز و بسته کردن گالری با کلیک روی دکمه
+        openGalleryBtn.addEventListener("click", function () {
+            galleryBox.classList.toggle("show");
         });
     }
 
+    // برای تنظیم تصاویر و ایندیکاتورها
     const indicators = document.querySelectorAll('.indicator');
     const images = document.querySelectorAll('.gallery-images img');
+    let currentIndex = 0;
 
     if (indicators.length && images.length) {
-        // when clicking on the indicators(circles), show the corresponding image
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', function () {
-                // disable all indicators
                 indicators.forEach(ind => ind.classList.remove('active'));
-                // activate the clicked indicator
                 indicator.classList.add('active');
-
-                // hide all images
                 images.forEach(img => img.style.display = 'none');
-                // show the corresponding image
                 images[index].style.display = 'block';
+                currentIndex = index;
             });
         });
 
-        // initialize the first indicator and image
+        // تنظیم اولیه ایندیکاتورها و تصاویر
         indicators[0].classList.add('active');
         images.forEach((img, index) => {
             img.style.display = index === 0 ? 'block' : 'none';
         });
+
+        // تغییر خودکار تصویر هر 5 ثانیه
+        function autoChangeImage() {
+            images[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].style.display = 'block';
+
+            indicators.forEach(ind => ind.classList.remove('active'));
+            indicators[currentIndex].classList.add('active');
+        }
+
+        setInterval(autoChangeImage, 5000);
     }
 
-    ///slider horizontal
-    let slides = document.querySelectorAll(".clickable-slide");
+    // تعریف تابع goToCategory
+    function goToCategory(categoryName) {
+        window.location.href = `Category.html?category=${categoryName}`;
+    }
 
-    slides.forEach((slide) => {
-        slide.addEventListener("click", function () {
-            let url = this.getAttribute("data-url"); // retrieve the URL from the data attribute
-            if (url) {
-                window.location.href = url; // change the window location to the URL
-            }
+    // تنظیم تصاویر قابل کلیک در گالری
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const category = this.getAttribute('onclick').match(/'([^']+)'/)[1]; // گرفتن نام دسته‌بندی از onclick
+            goToCategory(category); // انتقال به صفحه دسته‌بندی
         });
     });
 
-    //database connection register page
-    const form = document.getElementById('userForm');
-    if (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Getting values from form inputs
-            const first_name = document.getElementById('firstName').value;
-            const last_name = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const confirm_password = document.getElementById('confirm-password').value;
-
-            // Check if password and confirm password match
-            if (password !== confirm_password) {
-                alert('Passwords do not match.');
-                return;
+    // slider horizontal clickable items
+    let slides = document.querySelectorAll(".clickable-slide");
+    slides.forEach((slide) => {
+        slide.addEventListener("click", function () {
+            let url = this.getAttribute("data-url");
+            if (url) {
+                window.location.href = url;
             }
-
-            // Check if all fields are filled
-            if (!first_name || !last_name || !email || !mobile || !username || !password) {
-                return alert('Please fill in all fields.');
-            }
-
-            // Sending data to the server
-            fetch('http://localhost:3001/new', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    first_name,
-                    last_name,
-                    email,
-                    mobile,
-                    username,
-                    password
-                })
-            })
-                .then(response => {
-                    console.log('Server response:', response); // Log response for debugging
-                    if (!response.ok) {
-                        throw new Error('Server responded with an error');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response data:', data); // Log data for debugging
-                    if (data.message === 'User created successfully') {
-                        alert('User registered successfully!');
-                        form.reset(); // Reset the form after successful registration
-                    } else {
-                        alert('Failed to create user.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error saving user:', error);
-                    alert('An error occurred while saving the user.');
-                });
         });
-    }
+    });
 });

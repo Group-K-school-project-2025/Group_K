@@ -25,7 +25,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="registerPage.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="Category.html">Templates</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="aboutUs.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact us</a></li>
@@ -47,7 +47,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="registerPage.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
+                <li class="nav-item"><a class="nav-link" href="Category.html">Templates</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="aboutUs.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactUs.html">Contact us</a></li>
@@ -56,40 +56,64 @@
             </ul>
         </div>
     </div>
-    <section class="background-section">
-        <div class="container py-5">
-            <h2 class="hero-title">Start from here</h2>
-        </div>
-        
-    </section>
+    
 
-    <div class="button-container">
-        <button class="image-button" id="openGallery">
-            <img src="images/button_pointer.png" alt="Custom Button">
+    <!-- Section to display the button to open the gallery -->
+<section class="background-section">
+    <div class="container py-5">
+        <h2 class="hero-title">Choose your category</h2>
+    </div>
+</section>
+
+<!-- Button to close/open the gallery -->
+<div class="button-container">
+    <button class="image-button" id="openGallery">
+        <img src="images/button_pointer.png" alt="Open Gallery Button">
+    </button>
+</div>
+
+<!-- Hidden gallery -->
+<div id="galleryBox" class="gallery-container">
+    <div class="gallery-images">
+        <button class="gallery-item clickable-slide" onclick="goToCategory('business')">
+            <img src="images/BusinessWebsite_title.jpg" alt="Image 1">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('e-commerce')">
+            <img src="images/e-commerceWebsite_title.jpg" alt="Image 2">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('portfolio')">
+            <img src="images/PortfolioWebsite_title.jpg" alt="Image 3">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('education')">
+            <img src="images/EducationWebsite.jpg" alt="Image 4">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('event')">
+            <img src="images/EventWebsite_title.jpg" alt="Image 5">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('realestate')">
+            <img src="images/RealEstateWebsite_title.jpg" alt="Image 6">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('nonprofit')">
+            <img src="images/Non-profitWebsite_title.jpg" alt="Image 7">
+        </button>
+        <button class="gallery-item clickable-slide" onclick="goToCategory('restaurant')">
+            <img src="images/ResturantWebsite.jpg" alt="Image 8">
         </button>
     </div>
-
-
-    <!-- hidden gallery  -->
-    <div id="galleryBox" class="gallery-container">
-        <div class="button-container">
-            <button class="image-button" id="closeGallery">
-                <img src="images/button_pointer.png" alt="Close Button">
-            </button>
-        </div>
-        <div class="gallery-images">
-            <img src="images/image1web.jpg" alt="Image 1">
-            <img src="images/image2web.jfif" alt="Image 2">
-            <img src="images/image3web.jfif" alt="Image 3">
-        </div>
-        <!--  Scroll circless  -->
-        <div class="gallery-indicators">
-            <button class="indicator active" data-slide="0"></button>
-            <button class="indicator" data-slide="1"></button>
-            <button class="indicator" data-slide="2"></button>
-        </div>
-    </div>
     
+    <!-- Indicators -->
+    <div class="gallery-indicators">
+        <button class="indicator active" data-slide="0"></button>
+        <button class="indicator" data-slide="1"></button>
+        <button class="indicator" data-slide="2"></button>
+        <button class="indicator" data-slide="3"></button>
+        <button class="indicator" data-slide="4"></button>
+        <button class="indicator" data-slide="5"></button>
+        <button class="indicator" data-slide="6"></button>
+        <button class="indicator" data-slide="7"></button>
+    </div>
+</div>
+
     
 </div>
 
@@ -119,6 +143,7 @@
         </button>
     </div>
 </section>
+
 
     
     
