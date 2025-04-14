@@ -29,3 +29,8 @@ git push origin main
 
 sending files
 ------------------------------
+
+npm install express cors pg multer
+
+
+install things for upload picture
