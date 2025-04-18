@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Response data:', data); // Log data for debugging
             if (data.message === 'User created successfully') {
                 alert('User registered successfully!');
-                form.reset(); // Reset the form after successful registration
+                window.location.href = 'login.html'; // Redirect to login page after successful registration
+                //form.reset(); // Reset the form after successful registration
             } else {
                 alert('Failed to create user.');
             }

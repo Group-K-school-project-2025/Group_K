@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const path = require('path');
-
 const multer = require('multer');
 const fs = require('fs');
 
@@ -12,19 +11,12 @@ const port = 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/images', express.static(path.join(__dirname, '..', 'images')));
-  // Serve static files (CSS, JS)
 
+// Serve static image files from /images
+const imagesPath = path.join(__dirname, '..', 'images');
+app.use('/images', express.static(imagesPath));
 
-
-
-const imagesPath = path.join(__dirname, '..', 'images');  // set the path to your images directory
-app.use('/images', express.static(imagesPath));  // use express.static to serve images
-
-
-
-
-// connect to PostgreSQL database
+// PostgreSQL connection
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -33,7 +25,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-// check database connection
+// Check database connection
 async function checkDbConnection() {
   try {
     await pool.connect();
@@ -44,7 +36,7 @@ async function checkDbConnection() {
 }
 checkDbConnection();
 
-// pages HTML
+// Serve HTML pages
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../registerPage.html'));
 });
@@ -53,7 +45,11 @@ app.get('/upload-template', (req, res) => {
   res.sendFile(path.join(__dirname, '../templateUploadForm.html'));
 });
 
-// receive templates from database
+app.get('/category-page', (req, res) => {
+  res.sendFile(path.join(__dirname, '../categoryPage.html'));
+});
+
+// Get templates by category
 app.get('/templates/:category', async (req, res) => {
   const category = req.params.category;
   try {
@@ -65,13 +61,14 @@ app.get('/templates/:category', async (req, res) => {
   }
 });
 
+// Multer setup for file upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadDir = 'uploads/';
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir);
     }
-    cb(null, uploadDir); 
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -79,12 +76,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-
-
-// new template upload
+// Upload a new template
 app.post('/upload-template', upload.single('image'), async (req, res) => {
   const { title, category, price, uploader } = req.body;
-  const image_url = req.file ? '/images/' + path.basename(req.file.path) : null;  // imeg_url is the path to the image file
+  const image_url = req.file ? '/images/' + path.basename(req.file.path) : null;
+
   try {
     await pool.query(
       'INSERT INTO templates (title, image_url, category, price, uploader) VALUES ($1, $2, $3, $4, $5)',
@@ -97,11 +93,7 @@ app.post('/upload-template', upload.single('image'), async (req, res) => {
   }
 });
 
-app.get('/category-page', (req, res) => {
-  res.sendFile(path.join(__dirname, '../categoryPage.html'));
-});
-
-// register new user
+// Register a new user
 app.post('/new', async (req, res) => {
   const { first_name, last_name, email, mobile, username, password } = req.body;
 
@@ -114,6 +106,26 @@ app.post('/new', async (req, res) => {
   } catch (error) {
     console.error('Error inserting user:', error);
     res.status(500).json({ message: 'Failed to create user' });
+  }
+});
+
+// Simple login route
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const result = await pool.query(
+      'SELECT * FROM users WHERE username = $1 AND password = $2',
+      [username, password]
+    );
+
+    if (result.rows.length > 0) {
+      res.json({ success: true, message: 'Welcome to AMI web design service!' });
+    } else {
+      res.json({ success: false, message: 'Invalid username or password, please try again' });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

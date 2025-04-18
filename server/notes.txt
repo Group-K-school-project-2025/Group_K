@@ -34,3 +34,20 @@ npm install express cors pg multer
 
 
 install things for upload picture
+
+----------------------------------------
+
+npm install bcrypt
+
+this library is for password security
+
+---------------------
+
+npm install jsonwebtoken
+
+token install
+
+-------------------
+npm install dotenv
+
+security part
