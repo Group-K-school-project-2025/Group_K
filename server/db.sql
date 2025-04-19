@@ -95,5 +95,12 @@ VALUES
 
 
    
+CREATE TABLE cart_items (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    template_id INTEGER REFERENCES templates(id) ON DELETE CASCADE,
+    quantity INTEGER DEFAULT 1,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
  

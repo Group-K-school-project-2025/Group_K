@@ -30,6 +30,16 @@ git push origin main
 sending files
 ------------------------------
 
+git remote -v
+
+see git situation
+-----------------------------------
+
+git pull origin main
+
+get new update of github
+--------------------------------
+
 npm install express cors pg multer
 
 

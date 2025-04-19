@@ -129,6 +129,47 @@ app.post('/login', async (req, res) => {
   }
 });
 
+
+// Add item to cart
+// Assuming you have a cart_items table with user_id, template_id, and quantity columns
+app.post('/cart', async (req, res) => {
+  const { user_id, template_id, quantity } = req.body;
+
+  if (!user_id || !template_id || quantity < 1) {
+    return res.status(400).json({ error: 'Invalid input data' });
+  }
+
+  await pool.query(
+    'INSERT INTO cart_items (user_id, template_id, quantity) VALUES ($1, $2, $3)',
+    [user_id, template_id, quantity || 1]
+  );
+});
+
+// Getting shopping cart item for unique user
+// GET /cart/:userId - دریافت آیتم‌های سبد خرید برای یک کاربر خاص
+app.get('/cart/:userId', async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    const result = await pool.query(`
+      SELECT t.id, t.title, t.image_url, t.price, ci.quantity
+      FROM cart_items ci
+      JOIN templates t ON ci.template_id = t.id
+      WHERE ci.user_id = $1
+    `, [userId]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'No items found in the cart' });
+    }
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching cart items:', err);
+    res.status(500).json({ error: 'Failed to fetch cart items' });
+  }
+});
+
+
 // Start server
 app.listen(port, () => {
   console.log(`✅ Server is running at http://localhost:${port}`);
