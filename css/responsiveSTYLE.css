@@ -1,0 +1,302 @@
+/* -------------------------------
+    General Button Styles
+--------------------------------*/
+.clickable-slide {
+  cursor: pointer; /* mouse showes as a hand */
+  transition: transform 0.2s ease-in-out;
+}
+
+.clickable-slide:hover {
+  transform: scale(1.05); 
+}
+
+/* -------------------------------
+  Button Container Positioning
+--------------------------------*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed; /* position fixed to keep button on top */
+  top: 2px; /* position the button at the top */
+  left: 50%; /* center it horizontally */
+  transform: translateX(-50%); /* center it perfectly */
+  z-index: 9999; /* ensure it's above other elements */
+}
+
+/* Image Button Styling */
+.image-button img {
+  width: 30px; /* adjust the width to make it visible */
+  height: auto;
+  margin-top: 0; /* remove the negative margin */
+}
+
+/* -------------------------------
+  Navbar
+--------------------------------*/
+.navbar {
+  background-color: #636262 !important;
+  padding-top: 0.2rem; 
+      padding-bottom: 0.2rem;
+}
+
+
+.offcanvas-custom {
+  width: 50%;
+}
+
+
+/* -------------------------------
+  Hero Section
+--------------------------------*/
+.hero {
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out; /* slow animation */
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+.hero-title {
+  font-size: 18px; 
+  font-weight: bold;
+  color: white; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  background:transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: -200px; 
+  text-align: center;
+}
+
+.btn-outline-dark {
+  border-radius: 50px;
+  padding: 10px 25px;
+}
+
+/* -------------------------------
+  Background Section
+--------------------------------*/
+.background-section {
+  background-image: url('pictures/background\ picture.png');
+  background-size: cover;
+  background-position: center center;
+  min-height: 400px;
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* for positioning gallery */
+}
+
+/* -------------------------------
+  Clickable Slide Hover Effect
+--------------------------------*/
+.clickable-slide {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.clickable-slide:hover {
+  transform: scale(1.05);
+}
+
+/* -------------------------------
+  Gallery Container (Hidden by Default)
+--------------------------------*/
+/* Gallery Container (Hidden by Default) */
+/* Hide the gallery initially */
+.gallery-container {
+  display: none; /* Initially hidden */
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Width of the gallery */
+  max-width: 800px;
+  height: 350px; /* Height of the gallery */
+  background-color: transparent;
+  border-radius: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+/* Show the gallery when class 'show' is added */
+.gallery-container.show {
+  display: block; /* Make it visible */
+}
+
+/* -------------------------------
+  Gallery Images Container
+--------------------------------*/
+.gallery-images {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+/* Each image inside the gallery */
+.gallery-images .gallery-item {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Image styling */
+.gallery-images img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  min-width: 100%;
+  margin-right: 10px;
+  scroll-snap-align: center;
+}
+
+
+/* -------------------------------
+  Gallery Indicators (Pagination Dots)
+--------------------------------*/
+/* Styling for the gallery control buttons (indicators) */
+.gallery-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.gallery-indicators .indicator {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-indicators .indicator.active {
+  background-color: #000;
+}
+/* -------------------------------
+  Close Button Style
+--------------------------------*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.image-button img {
+  width: 20px;
+  height: auto;
+  margin-top: -740px; /* اگر این مشکل‌ساز بود، بررسیش می‌کنیم */
+}
+
+/* footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  
+}
+
+
+
+
+
+/* -------------------------------
+  Desktop Styles (min-width: 768px)
+--------------------------------*/
+@media (min-width: 768px) {
+
+  /* Hero Section */
+  .hero-title {
+    font-size: 28px;
+    margin-top: -100px;
+  }
+
+  .hero-card {
+    max-width: 600px;
+    padding: 50px;
+    border-radius: 20px;
+  }
+
+  /* Gallery Container */
+  .gallery-container {
+    height: 500px;
+    max-width: 1000px;
+    padding: 20px;
+  }
+
+  .gallery-images img {
+    max-width: 700px;
+    margin-right: 20px;
+  }
+
+  /* Navbar */
+  .navbar {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  /* Button Container */
+  .button-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: flex-end;
+    padding-right: 50px;
+  }
+
+  .image-button img {
+    width: 30px;
+    margin-top: 0;
+  }
+
+  /* Footer */
+  footer {
+    padding: 30px;
+    font-size: 16px;
+  }
+}
+
+  

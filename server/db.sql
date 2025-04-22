@@ -104,3 +104,14 @@ CREATE TABLE cart_items (
 );
 
  
+/*-- professional design --*/
+
+  CREATE TABLE requests (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255),
+      email VARCHAR(255),
+      phone VARCHAR(20),
+      delivery_date DATE,
+      category VARCHAR(255),
+      purpose TEXT
+  );

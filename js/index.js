@@ -18,34 +18,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll('.gallery-images img');
     let currentIndex = 0;
 
+    // بررسی اینکه آیا در حالت موبایل هستیم یا دسکتاپ
+    const isMobile = window.innerWidth < 768;
+
+    // تنظیم نمایش تصاویر و ایندیکاتورها برای موبایل و دسکتاپ
     if (indicators.length && images.length) {
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function () {
-                indicators.forEach(ind => ind.classList.remove('active'));
-                indicator.classList.add('active');
-                images.forEach(img => img.style.display = 'none');
-                images[index].style.display = 'block';
-                currentIndex = index;
+        if (isMobile) {
+            // در حالت موبایل: نمایش فقط یک تصویر
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function () {
+                    indicators.forEach(ind => ind.classList.remove('active'));
+                    indicator.classList.add('active');
+                    images.forEach(img => img.style.display = 'none');
+                    images[index].style.display = 'block';
+                    currentIndex = index;
+                });
             });
-        });
 
-        // تنظیم اولیه ایندیکاتورها و تصاویر
-        indicators[0].classList.add('active');
-        images.forEach((img, index) => {
-            img.style.display = index === 0 ? 'block' : 'none';
-        });
+            // تنظیم اولیه ایندیکاتورها و تصاویر
+            indicators[0].classList.add('active');
+            images.forEach((img, index) => {
+                img.style.display = index === 0 ? 'block' : 'none';
+            });
 
-        // تغییر خودکار تصویر هر 5 ثانیه
-        function autoChangeImage() {
-            images[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].style.display = 'block';
+            // تغییر خودکار تصویر هر 5 ثانیه
+            function autoChangeImage() {
+                images[currentIndex].style.display = 'none';
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].style.display = 'block';
 
-            indicators.forEach(ind => ind.classList.remove('active'));
-            indicators[currentIndex].classList.add('active');
+                indicators.forEach(ind => ind.classList.remove('active'));
+                indicators[currentIndex].classList.add('active');
+            }
+
+            setInterval(autoChangeImage, 5000);
+        } else {
+            // در حالت دسکتاپ: نمایش همه تصاویر به صورت افقی و همزمان
+            images.forEach(img => {
+                img.style.display = 'block';  // نمایش همه تصاویر
+            });
         }
-
-        setInterval(autoChangeImage, 5000);
     }
 
     // تعریف تابع goToCategory
@@ -73,3 +85,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+

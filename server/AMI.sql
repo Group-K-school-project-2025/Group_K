@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-04-19 12:22:07
+-- Started on 2025-04-19 12:42:22
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -517,7 +517,7 @@ ALTER TABLE ONLY public.cart_items
     ADD CONSTRAINT cart_items_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 
 
--- Completed on 2025-04-19 12:22:08
+-- Completed on 2025-04-19 12:42:23
 
 --
 -- PostgreSQL database dump complete

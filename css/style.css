@@ -4,16 +4,16 @@
 .clickable-slide {
     cursor: pointer; /* mouse showes as a hand */
     transition: transform 0.2s ease-in-out;
-}
-
-.clickable-slide:hover {
+  }
+  
+  .clickable-slide:hover {
     transform: scale(1.05); 
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Button Container Positioning
---------------------------------*/
-.button-container {
+  --------------------------------*/
+  .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,34 +23,34 @@
     left: 50%; /* center it horizontally */
     transform: translateX(-50%); /* center it perfectly */
     z-index: 9999; /* ensure it's above other elements */
-}
-
-/* Image Button Styling */
-.image-button img {
+  }
+  
+  /* Image Button Styling */
+  .image-button img {
     width: 30px; /* adjust the width to make it visible */
     height: auto;
     margin-top: 0; /* remove the negative margin */
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Navbar
---------------------------------*/
-.navbar {
+  --------------------------------*/
+  .navbar {
     background-color: #636262 !important;
     padding-top: 0.2rem; 
         padding-bottom: 0.2rem;
-}
-
-
-.offcanvas-custom {
+  }
+  
+  
+  .offcanvas-custom {
     width: 50%;
-}
-
-
-/* -------------------------------
+  }
+  
+  
+  /* -------------------------------
     Hero Section
---------------------------------*/
-.hero {
+  --------------------------------*/
+  .hero {
     height: 100vh; 
     display: flex;
     justify-content: center;
@@ -59,18 +59,18 @@
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 0.5s ease-in-out; /* slow animation */
-}
-
-.hero-card {
+  }
+  
+  .hero-card {
     background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     text-align: center;
     border-radius: 10px;
     max-width: 400px;
-}
-
-.hero-title {
-    font-size: 12px; 
+  }
+  
+  .hero-title {
+    font-size: 18px; 
     font-weight: bold;
     color: white; 
     text-transform: uppercase; 
@@ -80,17 +80,17 @@
     border-radius: 10px;
     margin-top: -200px; 
     text-align: center;
-}
-
-.btn-outline-dark {
+  }
+  
+  .btn-outline-dark {
     border-radius: 50px;
     padding: 10px 25px;
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Background Section
---------------------------------*/
-.background-section {
+  --------------------------------*/
+  .background-section {
     background-image: url('pictures/background\ picture.png');
     background-size: cover;
     background-position: center center;
@@ -100,26 +100,26 @@
     align-items: center;
     justify-content: center;
     position: relative; /* for positioning gallery */
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Clickable Slide Hover Effect
---------------------------------*/
-.clickable-slide {
+  --------------------------------*/
+  .clickable-slide {
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-}
-
-.clickable-slide:hover {
+  }
+  
+  .clickable-slide:hover {
     transform: scale(1.05);
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Gallery Container (Hidden by Default)
---------------------------------*/
-/* Gallery Container (Hidden by Default) */
-/* Hide the gallery initially */
-.gallery-container {
+  --------------------------------*/
+  /* Gallery Container (Hidden by Default) */
+  /* Hide the gallery initially */
+  .gallery-container {
     display: none; /* Initially hidden */
     position: absolute;
     top: 130px;
@@ -133,32 +133,32 @@
     overflow-x: auto;
     white-space: nowrap;
     padding: 10px;
-}
-
-/* Show the gallery when class 'show' is added */
-.gallery-container.show {
+  }
+  
+  /* Show the gallery when class 'show' is added */
+  .gallery-container.show {
     display: block; /* Make it visible */
-}
-
-/* -------------------------------
+  }
+  
+  /* -------------------------------
     Gallery Images Container
---------------------------------*/
-.gallery-images {
+  --------------------------------*/
+  .gallery-images {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-}
-
-/* Each image inside the gallery */
-.gallery-images .gallery-item {
+  }
+  
+  /* Each image inside the gallery */
+  .gallery-images .gallery-item {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-}
-
-/* Image styling */
-.gallery-images img {
+  }
+  
+  /* Image styling */
+  .gallery-images img {
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -166,20 +166,20 @@
     min-width: 100%;
     margin-right: 10px;
     scroll-snap-align: center;
-}
-
-
-/* -------------------------------
+  }
+  
+  
+  /* -------------------------------
     Gallery Indicators (Pagination Dots)
---------------------------------*/
-/* Styling for the gallery control buttons (indicators) */
-.gallery-indicators {
+  --------------------------------*/
+  /* Styling for the gallery control buttons (indicators) */
+  .gallery-indicators {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-}
-
-.gallery-indicators .indicator {
+  }
+  
+  .gallery-indicators .indicator {
     width: 10px;
     height: 10px;
     margin: 0 5px;
@@ -188,119 +188,277 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.gallery-indicators .indicator.active {
+  }
+  
+  .gallery-indicators .indicator.active {
     background-color: #000;
-}
-/* -------------------------------
+  }
+  /* -------------------------------
     Close Button Style
---------------------------------*/
-.button-container {
+  --------------------------------*/
+  .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: relative;
-}
-
-.image-button {
+    position: re lative;
+  }
+  
+  .image-button {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-}
-
-.image-button img {
+  }
+  
+  .image-button img {
     width: 20px;
     height: auto;
     margin-top: -740px; /* اگر این مشکل‌ساز بود، بررسیش می‌کنیم */
-}
-
-/* footer */
-html, body {
+  }
+  
+  /* footer */
+  html, body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
-}
-
-main {
+  }
+  
+  main {
     flex: 1;
-}
-
-footer {
+  }
+  
+  footer {
     background-color: black;
     color: white;
     text-align: center;
     padding: 15px;
     width: 100%;
     
-}
-
-
-
-
-/* login section */
-.login-page {
-    background-image: url('pictures/login_background2.jpeg');
-    background-size: cover;
-    background-position: center;
-    min-height: 60vh;
-    width: 100%;
-    
   }
-
-.login-card {
-    max-width: 400px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-}
-
-.login-card h2 {
-    font-weight: bold;
-    color: #333;
-}
-
-.login-card .form-label {
-    font-weight: 500;
-    color: #555;
-}
-
-.login-card .form-control {
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.login-card .btn-dark {
-    background-color: #333;
-    border: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-
-.login-card .btn-dark:hover {
-    background-color: #000;
-}
-
-
-/*contact us*/
-.btn-custom {
-    background-color: #b1b1b1; 
-    color: rgb(48, 44, 44);
-    border: none;
-}
-
-.btn-custom:hover {
-    background-color: #06011d; 
-}
-
-.contact-us {
-    background-color: #09090c;
-    padding-top: 50px; 
-    padding-bottom: 50px;
-    color: white;
-    
   
-}
+  
+  /* hide in mobile */
+.desktop-section {
+    display: none;
+  }
+  
+
+
+/* -------------------------------
+    Desktop Styles (min-width: 768px)
+--------------------------------*/
+    @media (min-width: 768px) {
+        
+        .gallery-container {
+            padding: 20px;
+            overflow: hidden;
+            margin-top: 80px;
+          }
+          
+          .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* یا space-between یا space-around */
+            gap: 16px; /* فاصله بین آیتم‌ها */
+          }
+          
+          .gallery-item {
+            flex: 0 0 calc(25% - 16px); /* هر آیتم 25 درصد عرض با فاصله */
+            box-sizing: border-box;
+          }
+          
+          .gallery-item img {
+            width: 100%;
+            height: 500px; /* افزایش ارتفاع تصویر در دسکتاپ */
+            display: block;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+
+          .background-section {
+            background-color: #535353;
+            min-height: 700px; /* ارتفاع بیشتر برای دسکتاپ */
+            background-size: contain; /* از contain استفاده کن تا تصویر زوم نشه */
+            background-repeat: no-repeat; /* تکرار نشه */
+            background-position: center top; /* تصویر رو بالاتر نگه دار */
+            
+        }
+
+        .hero-title {
+            position: relative;  /* تغییر به relative تا متن در لایه درست قرار گیرد */
+            top: -110px; 
+            left: 50%;
+            transform: translateX(-50%); /* وسط چین کردن */
+            text-align: center;
+            z-index: 10; /* مقدار بیشتر برای قرار گرفتن بالاتر از سایر المان‌ها */
+            color: #fff; /* رنگ سفید برای وضوح بیشتر */
+        }
+
+
+        .button-container {
+            position: relative;  /* تغییر به relative */
+            top: -240px;  /* تنظیم فاصله از بالای صفحه */
+            left: 50%;
+            transform: translateX(-50%);  /* وسط چین کردن */
+            z-index: 10;
+        }
+    
+        .image-button img {
+            width: 40px;  /* تنظیم اندازه تصویر دکمه */
+            height: auto;
+        }
+
+        /* horizantal photo slider */
+
+        .horizontal-slider {
+            max-width: 500px; /* یا هر عدد دلخواه مثلا 800px */
+            margin: 0 auto; /* برای وسط‌چین کردن */
+        }
+    
+        .horizontal-slider img {
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* 3d part in desktop */
+        .desktop-section {
+            display: block;
+            background-color: #2d2b2b; /* خاکستری روشن */
+            padding: 40px;
+            position: relative;
+            min-height: 300px;
+          }
+        
+          .section-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+          }
+        
+          .top-left-text h2 {
+            padding-top: 40px;
+            font-size: 15px;
+            color: white;
+            line-height: 1.5;
+          }
+        
+          .bottom-right {
+            position: absolute;
+            bottom: 40px;
+            right: 0;
+            text-align: center;
+          }
+          .bottom-right p {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+            line-height: 1.5;;
+          }
+        
+          .btn-custom {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        
+          .btn-custom:hover {
+            background-color: #555;
+          }
+
+
+          /* double dib part 4 */
+          .desktop-double-column {
+            display: flex;
+            width: 100vw;
+            min-height: 600px; /* حداقل ارتفاع */
+            padding: 40px 0; /* فاصله از بالا و پایین */
+          }
+        
+          .left-column, .right-column {
+            width: 50%;
+            height: 100%;
+          }
+        
+          .left-column {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        
+          .left-column img {
+            max-width: 80%;
+            height: auto;
+          }
+        
+          .right-column {
+            background-color: #54b19c;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* اینو از flex-start به center تغییر بده */
+            padding: 20px;
+          }
+        
+          .text-content {
+            max-width: 80%;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* همه چی وسط */
+          }
+          
+          .text-large {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 15px;
+          }
+          
+          .text-small {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+          }
+          
+          .btn-container {
+            text-align: center;
+          }
+          
+          .btn-custom {
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          
+          .btn-custom:hover {
+            background-color: #555;
+          }
+
+        @media (max-width: 767px) {
+            .desktop-double-column {
+              display: none;
+            }
+        }
+      
+    }
+    @media (max-width: 767px) {
+        /* Hide the desktop section (two parts you want to hide) */
+        .desktop-section {
+            display: none;
+        }
+    
+        .desktop-double-column {
+            display: none;
+        }
+    }
+    

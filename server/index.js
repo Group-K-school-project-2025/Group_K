@@ -170,6 +170,34 @@ app.get('/cart/:userId', async (req, res) => {
 });
 
 
+//submit professional design request
+app.use(express.json());  // برای پردازش درخواست‌های JSON
+app.use(express.urlencoded({ extended: true }));  // برای پردازش فرم‌های urlencoded
+
+// بررسی این که داده‌ها درست دریافت می‌شوند
+app.post('/submit-form', async (req, res) => {
+  console.log("Received form data:", req.body); // اینجا داده‌های فرم چاپ خواهند شد
+
+  const { name, email, phone, deliveryDate, category, purpose } = req.body;
+
+  if (!name || !email || !phone || !deliveryDate || !category || !purpose) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
+  try {
+    await pool.query(
+      'INSERT INTO requests (name, email, phone, deliveryDate, category, purpose) VALUES ($1, $2, $3, $4, $5, $6)',
+      [name, email, phone, deliveryDate, category, purpose]
+    );
+    res.status(201).json({ message: 'Request submitted successfully' });
+  } catch (error) {
+    console.error('Error inserting form data:', error);
+    res.status(500).json({ message: 'Failed to submit form' });
+  }
+});
+
+
+
 // Start server
 app.listen(port, () => {
   console.log(`✅ Server is running at http://localhost:${port}`);

@@ -1,0 +1,58 @@
+/* -------------------------------
+    Navbar
+--------------------------------*/
+.navbar {
+    background-color: #636262 !important;
+    padding-top: 0.2rem; 
+        padding-bottom: 0.2rem;
+}
+
+
+.offcanvas-custom {
+    width: 50%;
+}
+
+
+/* footer */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    
+}
+
+
+
+/*contact us*/
+.btn-custom {
+    background-color: #b1b1b1; 
+    color: rgb(48, 44, 44);
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #06011d; 
+}
+
+.contact-us {
+    background-color: #09090c;
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    color: white;
+    
+  
+}
+ 

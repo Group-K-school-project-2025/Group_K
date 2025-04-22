@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <link href="css/category.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     
@@ -87,21 +89,15 @@
     <div id="templateDetails">
       <p id="templatePrice"></p>
   
-      <div id="templateLikeSave">
-        <!-- -->
-        <button id="likeButton" class="like-btn">
-          <span class="like-icon">&#9825;</span>
-        </button>
-  
-        <!-- save button -->
-        <button id="saveButton" class="save-btn">
-          <img src="images/SaveIcon1.png" alt="Save Icon">
-        </button>
-  
         <!-- shopping basket icon -->
-        <button id="addToCartButton" class="cart-btn">
-          <img src="images/Shopping Cart Icon.png" alt="Cart Icon">
-        </button>
+        <div class="button-container">
+          <button class="icon-button add-to-cart" title="Add to Cart">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+         <!-- like -->
+          <button class="icon-button" title="Like">
+            <i class="fas fa-heart"></i>
+          </button>
       </div>
 
       
