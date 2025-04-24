@@ -11,8 +11,9 @@ const port = 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Serve static image files from /images
+// Serve static files
 const imagesPath = path.join(__dirname, '..', 'images');
 app.use('/images', express.static(imagesPath));
 
@@ -25,7 +26,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Check database connection
 async function checkDbConnection() {
   try {
     await pool.connect();
@@ -36,15 +36,13 @@ async function checkDbConnection() {
 }
 checkDbConnection();
 
-// Serve HTML pages
+// Serve HTML
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../registerPage.html'));
 });
-
 app.get('/upload-template', (req, res) => {
   res.sendFile(path.join(__dirname, '../templateUploadForm.html'));
 });
-
 app.get('/category-page', (req, res) => {
   res.sendFile(path.join(__dirname, '../categoryPage.html'));
 });
@@ -61,22 +59,21 @@ app.get('/templates/:category', async (req, res) => {
   }
 });
 
-// Multer setup for file upload
+// Upload template
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: (req, file, cb) => {
     const uploadDir = 'uploads/';
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir);
     }
     cb(null, uploadDir);
   },
-  filename: function (req, file, cb) {
+  filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
-  },
+  }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
-// Upload a new template
 app.post('/upload-template', upload.single('image'), async (req, res) => {
   const { title, category, price, uploader } = req.body;
   const image_url = req.file ? '/images/' + path.basename(req.file.path) : null;
@@ -93,7 +90,7 @@ app.post('/upload-template', upload.single('image'), async (req, res) => {
   }
 });
 
-// Register a new user
+// Register new user
 app.post('/new', async (req, res) => {
   const { first_name, last_name, email, mobile, username, password } = req.body;
 
@@ -109,9 +106,10 @@ app.post('/new', async (req, res) => {
   }
 });
 
-// Simple login route
+// Login
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
+
   try {
     const result = await pool.query(
       'SELECT * FROM users WHERE username = $1 AND password = $2',
@@ -129,9 +127,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-
 // Add item to cart
-// Assuming you have a cart_items table with user_id, template_id, and quantity columns
 app.post('/cart', async (req, res) => {
   const { user_id, template_id, quantity } = req.body;
 
@@ -139,14 +135,19 @@ app.post('/cart', async (req, res) => {
     return res.status(400).json({ error: 'Invalid input data' });
   }
 
-  await pool.query(
-    'INSERT INTO cart_items (user_id, template_id, quantity) VALUES ($1, $2, $3)',
-    [user_id, template_id, quantity || 1]
-  );
+  try {
+    await pool.query(
+      'INSERT INTO cart_items (user_id, template_id, quantity) VALUES ($1, $2, $3)',
+      [user_id, template_id, quantity]
+    );
+    res.status(201).json({ message: 'Item added to cart' });
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    res.status(500).json({ error: 'Failed to add item to cart' });
+  }
 });
 
-// Getting shopping cart item for unique user
-// GET /cart/:userId - دریافت آیتم‌های سبد خرید برای یک کاربر خاص
+// Get cart items
 app.get('/cart/:userId', async (req, res) => {
   const userId = req.params.userId;
 
@@ -169,15 +170,8 @@ app.get('/cart/:userId', async (req, res) => {
   }
 });
 
-
-//submit professional design request
-app.use(express.json());  // برای پردازش درخواست‌های JSON
-app.use(express.urlencoded({ extended: true }));  // برای پردازش فرم‌های urlencoded
-
-// بررسی این که داده‌ها درست دریافت می‌شوند
+// Submit design request
 app.post('/submit-form', async (req, res) => {
-  console.log("Received form data:", req.body); // اینجا داده‌های فرم چاپ خواهند شد
-
   const { name, email, phone, deliveryDate, category, purpose } = req.body;
 
   if (!name || !email || !phone || !deliveryDate || !category || !purpose) {
@@ -186,7 +180,7 @@ app.post('/submit-form', async (req, res) => {
 
   try {
     await pool.query(
-      'INSERT INTO requests (name, email, phone, deliveryDate, category, purpose) VALUES ($1, $2, $3, $4, $5, $6)',
+      'INSERT INTO requests (name, email, phone, delivery_date, category, purpose) VALUES ($1, $2, $3, $4, $5, $6)',
       [name, email, phone, deliveryDate, category, purpose]
     );
     res.status(201).json({ message: 'Request submitted successfully' });
@@ -195,8 +189,6 @@ app.post('/submit-form', async (req, res) => {
     res.status(500).json({ message: 'Failed to submit form' });
   }
 });
-
-
 
 // Start server
 app.listen(port, () => {

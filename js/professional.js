@@ -1,23 +1,38 @@
-document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault(); // جلوگیری از ارسال فرم به صورت معمولی
+const form = document.getElementById('request-form');
 
-    const formData = new FormData(this);
-    console.log("Form data prepared:", formData); // بررسی داده‌های فرم
+form.addEventListener('submit', function (event) {
+  event.preventDefault(); // ensure the form doesn't submit the default way
 
-    fetch("http://localhost:3001/submit-form", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        console.log("Response Status:", response.status); // بررسی وضعیت پاسخ
-        return response.json();  // فرض می‌کنیم که سرور جواب را به صورت JSON ارسال می‌کند
-    })
-    .then(data => {
-        console.log("Form submitted successfully:", data);
-        // نمایش پیامی مبنی بر موفقیت یا انجام سایر کارها
-    })
-    .catch(error => {
-        console.error("Error submitting form:", error);
-        // نمایش پیامی مبنی بر خطا
-    });
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    deliveryDate: form.deliveryDate.value,
+    category: form.category.value,
+    purpose: form.purpose.value
+  };
+
+  fetch('http://localhost:3001/submit-form', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Form submitted:", data);
+
+    alert("Our experts will contact you soon!");
+    const goToHomepage = confirm("Would you like to go back to the homepage?");
+    if (goToHomepage) {
+      window.location.href = '/index.html'; // Redirect to the homepage
+    }
+  
+    
+  })
+  .catch(error => {
+    console.error("Error submitting form:", error);
+  });
 });
+
