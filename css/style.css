@@ -201,7 +201,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: re lative;
+    position: relative;
   }
   
   .image-button {
@@ -256,13 +256,46 @@
             overflow: hidden;
             margin-top: 80px;
           }
-          
+        
           .gallery-images {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* یا space-between یا space-around */
-            gap: 16px; /* فاصله بین آیتم‌ها */
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 10px;
+            scrollbar-width: none; /* Firefox */
           }
+          .gallery-images::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+          }
+
+          .gallery-navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none; /* برای اینکه فقط دکمه‌ها کلیک‌پذیر باشند */
+          }
+          /* دکمه‌های ناوبری */
+          .nav-arrow {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            pointer-events: all;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+          }
+          
+          .nav-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+          }
+
+          
+
           
           .gallery-item {
             flex: 0 0 calc(25% - 16px); /* هر آیتم 25 درصد عرض با فاصله */
@@ -461,4 +494,10 @@
             display: none;
         }
     }
-    
+    /* مخفی کردن فلش‌ها در حالت موبایل */
+@media screen and (max-width: 767px) {
+  #prevBtn,
+  #nextBtn {
+    display: none;
+  }
+}

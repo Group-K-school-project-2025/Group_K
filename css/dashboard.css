@@ -73,3 +73,18 @@ footer {
     width: 100%;
     
 }
+
+
+/* برای تصویر داشبورد، فقط در سایز دسکتاپ */
+@media (min-width: 1024px) {
+  .dashboard-main-img {
+    width: 25%; /* عرض رو در دسکتاپ 80% می‌کنیم */
+    height: auto;
+  }
+
+  
+}
+
+
+
+

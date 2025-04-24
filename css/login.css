@@ -47,6 +47,13 @@ footer {
     
   }
 
+  /* تغییرات برای دسکتاپ */
+@media (min-width: 1024px) {
+    .login-page {
+      background-size: contain; /* این باعث می‌شود که تصویر در حالت دسکتاپ کوچک‌تر و متناسب با اندازه صفحه شود */
+    }
+  }
+
 .login-card {
     max-width: 400px;
     width: 100%;
