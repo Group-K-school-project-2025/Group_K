@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
              cartBtn.setAttribute("data-id", template.id);
              cartBtn.setAttribute("data-name", template.title);
              cartBtn.setAttribute("data-img", img.src);
+             cartBtn.setAttribute("data-price", template.price);
            }
          });
        });
@@ -100,12 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const id = this.getAttribute('data-id');
       const name = this.getAttribute('data-name');
       const img = this.getAttribute('data-img');
+      const price = this.getAttribute('data-price'); // Assuming you have a price variable in the modal
 
       // Get existing cart items or start with an empty array
       let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
       // Add new item to the cart
-      cartItems.push({ id, name, img });
+      cartItems.push({ id, name, img, price });
 
       // Save back to localStorage
       localStorage.setItem("cart", JSON.stringify(cartItems));
