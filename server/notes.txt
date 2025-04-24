@@ -61,3 +61,13 @@ token install
 npm install dotenv
 
 security part
+---------------
+
+delete item from console(chrome) in shopping card
+localStorage.removeItem("cart");
+
+see items
+localStorage.getItem("cart");
+
+---------------------------
+npx dotenv-vault@latest login

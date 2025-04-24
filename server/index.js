@@ -18,13 +18,17 @@ const imagesPath = path.join(__dirname, '..', 'images');
 app.use('/images', express.static(imagesPath));
 
 // PostgreSQL connection
+const openDb = () => {
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'AMI',
-  password: 'mi2360366',
-  port: 5432,
-});
+  user: process.env.DB_USER,  
+  host: process.env.DB_HOST,  
+  database: process.env.DB_NAME,  
+  password: process.env.DB_PASSWORD, 
+  port: process.env.DB_PORT,  
+  ssl: process.env.SSL
+})
+return pool
+}
 
 async function checkDbConnection() {
   try {
@@ -128,24 +132,26 @@ app.post('/login', async (req, res) => {
 });
 
 // Add item to cart
-app.post('/cart', async (req, res) => {
-  const { user_id, template_id, quantity } = req.body;
-
-  if (!user_id || !template_id || quantity < 1) {
-    return res.status(400).json({ error: 'Invalid input data' });
-  }
+// Endpoint to add cart items to the database
+app.post('/cart/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  const { templateId, quantity } = req.body;
 
   try {
-    await pool.query(
-      'INSERT INTO cart_items (user_id, template_id, quantity) VALUES ($1, $2, $3)',
-      [user_id, template_id, quantity]
-    );
+    // Insert cart item into the database
+    await pool.query(`
+      INSERT INTO cart_items (user_id, template_id, quantity)
+      VALUES ($1, $2, $3)
+    `, [userId, templateId, quantity]);
+
     res.status(201).json({ message: 'Item added to cart' });
-  } catch (error) {
-    console.error('Error adding to cart:', error);
+  } catch (err) {
+    console.error('Error inserting item into cart:', err);
     res.status(500).json({ error: 'Failed to add item to cart' });
   }
 });
+
+
 
 // Get cart items
 app.get('/cart/:userId', async (req, res) => {
@@ -189,6 +195,27 @@ app.post('/submit-form', async (req, res) => {
     res.status(500).json({ message: 'Failed to submit form' });
   }
 });
+
+//contact us
+app.post('/submit-message', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+      return res.status(400).json({ message: 'All fields are required' });
+  }
+
+  try {
+      await pool.query(
+          'INSERT INTO contactUs (name, email, message) VALUES ($1, $2, $3)',
+          [name, email, message]
+      );
+      res.status(201).json({ message: 'Message submitted successfully' });
+  } catch (error) {
+      console.error('Error inserting message data:', error);
+      res.status(500).json({ message: 'Failed to submit message' });
+  }
+});
+
 
 // Start server
 app.listen(port, () => {
